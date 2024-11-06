@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ThreadController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/{categoryName}', function () {
-    return Inertia::render('Discussion/Index');
-})->name('discussion');
+Route::get('/{categoryName}', [ThreadController::class, 'index'])->name('discussion');
+
+Route::post('/{categoryName}/thread', [ThreadController::class, 'store'])->name('thread.post');

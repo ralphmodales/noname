@@ -10,9 +10,15 @@ class ThreadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $categoryName)
     {
-        //
+        $threads = Thread::whereHas('category', function ($query) use ($categoryName) {
+            $query->where('name', $categoryName);
+        })->with(['user', 'category'])->latest()->paginate(10);
+
+        return response()->json([
+            'threads' => $threads
+        ]);
     }
 
     /**
@@ -26,9 +32,21 @@ class ThreadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $thread = Thread::create($validatedData);
+
+        return response()->json([
+            'message' => 'Thread created successfully',
+            'thread' => $thread
+        ], 201);
     }
 
     /**
