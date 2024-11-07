@@ -28,7 +28,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'thread_id' => 'required|exists:threads,id',
+            'comment' => 'required|string',
+        ]);
+
+        $validatedData['user_id'] = auth()->id();
+
+        $comment = Comment::create($validatedData);
+
+        return response()->json([
+            'message' => 'Comment created successfully',
+            'comment' => $comment
+        ], 201);
     }
 
     /**

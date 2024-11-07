@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { formatDistanceToNow } from 'date-fns';
+import CommentForm from './CommentForm.vue';
 
 const props = defineProps({
     thread: {
@@ -64,8 +65,9 @@ const submitComment = () => {
                 </div>
 
                 <!-- Comment Content -->
-                <div class="whitespace-pre-wrap">{{ comment.comment }}</div>
+                <div class="whitespace-pre-wrap text-xs">{{ comment.comment }}</div>
             </div>
+            <CommentForm :thread-id="thread.id" :category-name="$page.props.category" />
         </div>
     </div>
 </template>
