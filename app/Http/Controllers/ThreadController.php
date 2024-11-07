@@ -15,7 +15,7 @@ class ThreadController extends Controller
     {
         $threads = Thread::whereHas('category', function ($query) use ($categoryName) {
             $query->where('name', $categoryName);
-        })->with(['user', 'category'])->latest()->paginate(10);
+        })->with(['user', 'category', 'comments.user'])->latest()->paginate(10);
 
         return Inertia::render('Discussion/Index', [
             'threads' => $threads,

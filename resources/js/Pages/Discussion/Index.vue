@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import ThreadComponent from './ThreadComponent.vue';
 
 const props = defineProps({
     threads: Object,
@@ -28,6 +29,17 @@ const props = defineProps({
                         Create New Thread
                     </button>
                 </div>
+
+                <!-- Thread with Discussion -->
+                <div>
+                    <ThreadComponent
+                        v-for="thread in threads.data"
+                        :key="thread.id"
+                        :thread="thread"
+                        @submit-comment="handleSubmitComment"
+                    />
+                </div>
+
             </div>
         </div>
     </AuthenticatedLayout>
