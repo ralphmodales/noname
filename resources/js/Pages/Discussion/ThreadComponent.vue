@@ -64,7 +64,7 @@ const submitComment = () => {
                 </div>
 
                 <!-- Comment Content -->
-                <div class="whitespace-pre-wrap text-xs">{{ comment.comment }}</div>
+                <div class="whitespace-pre-wrap">{{ comment.comment }}</div>
             </div>
         </div>
     </div>

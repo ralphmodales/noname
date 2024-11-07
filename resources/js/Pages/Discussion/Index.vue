@@ -36,10 +36,8 @@ const props = defineProps({
                         v-for="thread in threads.data"
                         :key="thread.id"
                         :thread="thread"
-                        @submit-comment="handleSubmitComment"
-                    />
+                        @submit-comment="handleSubmitComment" />
                 </div>
-
             </div>
         </div>
     </AuthenticatedLayout>
