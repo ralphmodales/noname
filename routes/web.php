@@ -19,9 +19,9 @@ Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/{categoryName}', [ThreadController::class, 'index'])->name('discussion');
+Route::get('/t/{categoryName}', [ThreadController::class, 'index'])->name('discussion');
 
-Route::post('/{categoryName}/thread', [ThreadController::class, 'store'])->name('thread.post');
+Route::post('/t/{categoryName}/thread', [ThreadController::class, 'store'])->name('thread.post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

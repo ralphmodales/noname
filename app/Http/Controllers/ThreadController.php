@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Thread;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ThreadController extends Controller
 {
@@ -16,8 +17,9 @@ class ThreadController extends Controller
             $query->where('name', $categoryName);
         })->with(['user', 'category'])->latest()->paginate(10);
 
-        return response()->json([
-            'threads' => $threads
+        return Inertia::render('Discussion/Index', [
+            'threads' => $threads,
+            'categoryName' => $categoryName,
         ]);
     }
 
