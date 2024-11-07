@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { ref } from 'vue';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     categories: {
@@ -24,12 +24,12 @@ const props = defineProps({
                 <div class="bg-slate p-2 border border-black mt-4">
                     <h2 class="text-xs font-bold text-center mb-2">[Categories]</h2>
                     <div class="flex flex-wrap justify-center gap-2">
-                        <a v-for="category in categories"
+                        <Link v-for="category in categories"
                            :key="category"
-                           href="#"
+                           :href="`/t/${category.name}`"
                            class="text-xs text-black underline cursor-pointer">
                             /{{ category.name.toLowerCase() }}/
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
