@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
@@ -17,7 +18,8 @@ use Inertia\Inertia;
 }); */
 
 Route::get('/', function () {
-    return Inertia::render('Dashboard');
+    $categories = Category::select('name')->get();
+    return Inertia::render('Home', ['categories' => $categories]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/t/{categoryName}', [ThreadController::class, 'index'])->name('discussion');

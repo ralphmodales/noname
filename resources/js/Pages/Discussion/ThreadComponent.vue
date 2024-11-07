@@ -35,7 +35,6 @@ const submitComment = () => {
                 <span class="text-gray-600 text-xs">
                     {{ formatDistanceToNow(new Date(thread.created_at)) }} ago
                 </span>
-                <span class="text-gray-600 text-xs">No.{{ thread.id }}</span>
             </div>
 
             <!-- Thread Title -->
@@ -61,7 +60,6 @@ const submitComment = () => {
                     <span class="text-gray-600 text-xs">
                         {{ formatDistanceToNow(new Date(comment.created_at)) }} ago
                     </span>
-                    <span class="text-gray-600 text-xs">No.{{ comment.id }}</span>
                 </div>
 
                 <!-- Comment Content -->
