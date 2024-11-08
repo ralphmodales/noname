@@ -15,7 +15,7 @@ const props = defineProps({
             <div class="max-w-4xl mx-auto bg-white">
                 <!-- Header Image -->
                 <div class="p-2">
-                    <img src="https://giffiles.alphacoders.com/221/221575.gif"
+                    <img src="https://i.ytimg.com/vi/970nqRBIZgE/maxresdefault.jpg"
                          alt="Header Image"
                          class="w-full h-40 object-cover border-4 border-black">
                 </div>

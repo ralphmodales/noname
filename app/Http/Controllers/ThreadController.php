@@ -34,19 +34,20 @@ class ThreadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'user_id' => 'required|exists:users,id',
         ]);
+
+        $validatedData['user_id'] = auth()->id();
 
         $thread = Thread::create($validatedData);
 
         return response()->json([
-            'message' => 'Thread created successfully',
+            'message' => 'Comment created successfully',
             'thread' => $thread
         ], 201);
     }

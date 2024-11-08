@@ -24,8 +24,8 @@ Route::get('/', function () {
 
 Route::get('/t/{categoryName}', [ThreadController::class, 'index'])->name('discussion');
 
-Route::post('/t/{categoryName}/thread', [ThreadController::class, 'store'])->name('thread.post');
-Route::post('/t/{categoryName}/comment', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comment.post');
+Route::post('/t/{categoryName}/thread', [ThreadController::class, 'store'])->name('thread.store');
+Route::post('/t/{categoryName}/comment', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comment.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

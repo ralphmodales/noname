@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import ThreadComponent from './ThreadComponent.vue';
-
+import ThreadForm from './ThreadForm.vue';
 const props = defineProps({
     threads: Object,
     categoryName: String,
@@ -28,6 +28,7 @@ const props = defineProps({
                     class="w-full underline text-sm text-black">
                         Create New Thread
                     </button>
+                    <ThreadForm :category-name="$page.props.category" />
                 </div>
 
                 <!-- Thread with Discussion -->
