@@ -37,6 +37,3 @@ const props = defineProps({
     </AuthenticatedLayout>
 </template>
 
-<style scoped>
-/* Add any additional styles here */
-</style>
